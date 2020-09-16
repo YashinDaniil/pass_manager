@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1178px" height="890px" viewBox="0 0 1178 890" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>LoginFigure</title>
+    <defs>
+        <path d="M0,2.27373675e-13 L870,2.27373675e-13 L870.002895,0.220946607 C1041.17264,6.5328979 1178,147.287577 1178,320 C1178,496.73112 1034.73112,640 858,640 C818.973859,640 781.579417,633.013864 746.999053,620.22397 L747.000292,620.348267 C737.494565,617.519194 727.424696,616 717,616 C674.828982,616 638.464509,640.860775 621.763067,676.725838 C577.822475,800.983674 459.306676,890 320,890 C143.26888,890 0,746.73112 0,570 L0,570 L0,2.27373675e-13 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LoginFigure">
+            <use fill="#FFFFFF" xlink:href="#path-1"></use>
+            <use fill="#F3F9FF" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="186px" height="224px" viewBox="0 0 186 224" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>LightLogo</title>
+    <defs>
+        <path d="M2.28645765,121.778586 C11.4084598,100.716446 32.0645794,85.8123102 56.2888404,85.0321538 L56.2884112,85 L83.2884112,85 L83.288,85 L109.288,85 L109.288287,84.9925726 C118.169736,84.7283053 125.288411,77.4454805 125.288411,68.5 C125.288411,59.5545195 118.169736,52.2716947 109.288287,52.0074274 L109.288,52 L56.6759975,52 C53.6734075,52 50.7799121,50.8743608 48.5666825,48.8452818 L0.97268887,5.21132046 C-0.248589695,4.09165771 -0.33096559,2.19394982 0.788697158,0.972671255 C1.35692093,0.352877919 2.15917159,2.37490696e-15 3.00001761,0 L116.788,0 L117.921184,0.00917704291 C155.23022,0.614086194 185.288411,31.0468097 185.288411,68.5 C185.288411,105.717412 155.607478,136.00247 118.624929,136.975858 C118.626484,136.982285 118.627721,136.990633 118.628956,136.998981 L117.288,136.999 L117.288411,137 L71.2884112,137 L71.288,136.999 L58.2868902,137 L58.286704,137.072399 C57.2933237,137.024318 56.2937074,137 55.2884112,137 L54.287,137.008 L54.2884112,220.288394 C54.2884112,221.12924 53.9355333,221.93149 53.3157399,222.499714 C52.1414336,223.576313 50.3417304,223.541559 49.2096527,222.451581 L49.0770907,222.315722 L2.28841119,171.280702 Z" id="path-1"></path>
+        <filter x="-7.3%" y="-6.0%" width="114.6%" height="112.1%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="3" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="-6" dy="-6" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowInnerInner1" result="shadowMatrixInner1"></feColorMatrix>
+            <feGaussianBlur stdDeviation="7.5" in="SourceAlpha" result="shadowBlurInner2"></feGaussianBlur>
+            <feOffset dx="12" dy="12" in="shadowBlurInner2" result="shadowOffsetInner2"></feOffset>
+            <feComposite in="shadowOffsetInner2" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner2"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.819607843   0 0 0 0 0.850980392   0 0 0 0 0.901960784  0 0 0 1 0" type="matrix" in="shadowInnerInner2" result="shadowMatrixInner2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixInner1"></feMergeNode>
+                <feMergeNode in="shadowMatrixInner2"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="LightLogo">
+            <use fill="#F3F9FF" fill-rule="evenodd" xlink:href="#path-1"></use>
+            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>

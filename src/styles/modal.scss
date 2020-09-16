@@ -1,0 +1,18 @@
+.modal-content{
+  background-color: #f3f9ff;
+  body.dark &{
+    background-color: #191919;
+  }
+}
+
+.modal-header {
+  border: none;
+}
+
+.modal-body-text{
+  margin-bottom: 20px;
+}
+
+.modal-footer {
+  border: none;
+}

@@ -17,7 +17,6 @@ import {
 	USER_VALID_MASTER
 } from './types';
 
-import {BASE_URL} from "../server_types";
 import React from "react";
 import {Redirect} from "react-router-dom";
 
@@ -54,7 +53,7 @@ export const login = ({username, password}) => (dispatch) => {
 	// Request Body
 	const body = JSON.stringify({username, password});
 	axios
-		.post(BASE_URL + '/account/login/', body, config)
+		.post('/account/login/', body, config)
 		.then((res) => {
 			console.log(res);
 			dispatch({
@@ -85,7 +84,7 @@ export const register = ({username, email, password, master_password}) => (dispa
 		// Request Body
 		const body = JSON.stringify({username, email, password, master_password});
 		axios
-			.post(BASE_URL + '/account/register/', body, config)
+			.post('/account/register/', body, config)
 			.then((res) => {
 				dispatch({
 					type: REGISTER_SUCCESS,
@@ -111,7 +110,7 @@ export const validMasterPass = ({master_password}) => (dispatch, getState) => {
 	// Request Body
 	const body = JSON.stringify({master_password});
 	axios
-		.post(BASE_URL + '/account/check_master_pass/', body, tokenConfig(getState))
+		.post('/account/check_master_pass/', body, tokenConfig(getState))
 		.then((res) => {
 			console.log(res);
 			dispatch({

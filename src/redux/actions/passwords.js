@@ -5,13 +5,12 @@ import {
 	PASSWORD_DELETE
 } from '../actions/types';
 import {SIDEBAR_CLEAR, SIDEBAR_ClOSE} from "./types";
-import {BASE_URL} from "../server_types";
 import {tokenConfig} from "./auth";
 import axios from 'axios';
 
 export const getPasswords = () => (dispatch, getState) => {
 	axios
-		.get(BASE_URL + '/pass/', tokenConfig(getState))
+		.get('/pass/', tokenConfig(getState))
 		.then((res) => {
 			console.log(res.data);
 			dispatch({
@@ -34,7 +33,7 @@ export const addPassword = (newItem) => (dispatch, getState) => {
 
 	};
 	axios
-		.post(BASE_URL + '/pass/create/', body, tokenConfig(getState))
+		.post('/pass/create/', body, tokenConfig(getState))
 		.then((res) => {
 			dispatch({
 				type: PASSWORD_ADD,
@@ -65,7 +64,7 @@ export const editPassword = (editItem) => (dispatch, getState) => {
 		category:editItem.val5
 	};
 	axios
-		.put(BASE_URL + '/pass/edit/', body, tokenConfig(getState))
+		.put('/pass/edit/', body, tokenConfig(getState))
 		.then((res) => {
 			dispatch({
 				type: PASSWORD_EDIT,
@@ -81,7 +80,7 @@ export const editPassword = (editItem) => (dispatch, getState) => {
 
 export const deletePassword = (passId) => (dispatch, getState) => {
 	axios
-		.post(BASE_URL + '/pass/delete/', {id: passId}, tokenConfig(getState))
+		.post('/pass/delete/', {id: passId}, tokenConfig(getState))
 		.then((res) => {
 			dispatch({
 				type: PASSWORD_DELETE,

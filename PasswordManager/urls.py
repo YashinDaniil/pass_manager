@@ -1,6 +1,9 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from rest_framework_jwt.views import obtain_jwt_token
+from django.conf.urls import url
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

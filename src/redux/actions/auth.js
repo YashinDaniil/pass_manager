@@ -26,7 +26,7 @@ export const loadUser = () => (dispatch, getState) => {
 	// User Loading
 	dispatch({type: USER_LOADING});
 	axios
-		.get(BASE_URL + '/account/user/', tokenConfig(getState))
+		.get('/account/user/', tokenConfig(getState))
 		.then((res) => {
 			dispatch({
 				type: USER_LOADED,

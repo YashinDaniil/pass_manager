@@ -1,6 +1,5 @@
 import {CARD_ADD, CARD_DELETE, CARD_EDIT, CARD_GET} from "./types";
 import {SIDEBAR_CLEAR, SIDEBAR_ClOSE} from "./types";
-import {BASE_URL} from "../server_types";
 import {tokenConfig} from "./auth";
 import axios from 'axios';
 

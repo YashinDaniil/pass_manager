@@ -12,7 +12,7 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('pass/', include('pass.urls')),
     #path('notes/', include('notes.urls')),
-    #path('cards/', include('cards.urls')),
+    path('cards/', include('cards.urls')),
     #path('location/', include('location.urls')),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
     url('favicon.ico', RedirectView.as_view(url='/static/favicon.ico'), name='favicon')

@@ -1,0 +1,163 @@
+.card-item {
+  width: 400px;
+  height: 250px;
+  padding: 13px 23px;
+  /*background: #ECF0F3;*/
+  box-shadow: -7px -7px 10px 0 rgba(255, 255, 255, 0.50), 7px 7px 10px 0 #D1D9E6;
+  border-radius: 7px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &--content-front {
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 250px;
+    z-index: 5;
+    position: absolute;
+    top: 10px;
+  }
+
+  &--content {
+    z-index: 5;
+    position: relative;
+    top: 10px;
+  }
+}
+
+.card-item-title {
+  margin: 10px 25px;
+}
+
+.card-item-logo {
+  width: 40px;
+  position: absolute;
+  right: 25px;
+  margin-top: 10px;
+}
+
+.card-item-chip {
+  position: relative;
+  left: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 40px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-image: linear-gradient(234deg, #DFE5EA 15%, #D1D5D8 87%);
+  border: 0 solid #FFFFFF;
+  box-shadow: inset -1px -1px 3px 0 rgba(255, 255, 255, 0.50), inset 1px 1px 3px 0 rgba(0, 0, 0, 0.50);
+
+  body.dark & {
+    background: #202020;
+    border: 0 solid #3B3B3B;
+    box-shadow: inset -1px -1px 3px 0 #3F3F3F, inset 1px 1px 3px 0 #000000;
+
+  }
+}
+
+.card-item-number {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 25px 25px;
+  font-size: 26px;
+
+  body.dark & {
+   color: #FFF;
+  }
+}
+
+.card-item-add-info {
+  margin: 5px 25px 15px;
+  font-size: 16px !important;
+  body.dark & {
+   color: #fff !important;
+  }
+}
+
+.card-item-payment {
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+  filter: brightness(5);
+
+}
+
+.card-item-magnet-line {
+  width: calc(100% + 46px);
+  height: 40px;
+  margin: 7px 0 15px -23px;
+  background-color: #272727;
+
+  body.dark & {
+    background-color: #a5acb1;
+  }
+}
+
+.strip-bottom,
+.strip-top {
+  position: relative;
+  right: 0;
+  top: 0;
+  height: inherit;
+  background-image: linear-gradient(to bottom, #ff6767, #ff4545);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+
+  &.dc {
+    background-image: linear-gradient(rgb(119, 102, 255), rgb(89, 68, 255));
+  }
+
+  &.jcb {
+    background-image: linear-gradient(rgb(108, 255, 102), rgb(75, 255, 68));
+  }
+
+  &.ae {
+    background-image: linear-gradient(rgb(102, 158, 255), rgb(68, 136, 255));
+  }
+
+  &.visa {
+    background-image: linear-gradient(rgb(102, 218, 255), rgb(68, 210, 255));
+  }
+
+  &.mc {
+    background-image: linear-gradient(rgb(255, 127, 102), rgb(255, 99, 68));
+  }
+
+  &.dsc {
+    background-image: linear-gradient(rgb(255, 209, 102), rgb(255, 199, 68));
+  }
+
+  &.up {
+    background-image: linear-gradient(rgb(169, 102, 255), rgb(150, 68, 255));
+  }
+}
+
+.strip-bottom {
+  width: 200px;
+  transform: skewX(-15deg) translateX(50px);
+  margin-top: -12px;
+  margin-left: 170px;
+}
+
+.strip-top {
+  width: 180px;
+  transform: skewX(20deg) translateX(50px);
+  margin-top: -250px;
+  margin-left: 190px;
+}
+
+.card-item-edit-button{
+  position: absolute;
+  right: 40px;
+  cursor: pointer;
+}
+
+.card-item-delete-button {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+}

@@ -5,18 +5,13 @@ const initialState = {
 	isShowMode: false,
 	isShowType: '',
 	isEditMode: false,
-	/*
-		password
-		note
-		location
-		card
-	 */
 	sideBarContent: {
 		id: -1,
 		val1: '',
 		val2: '',
 		val3: '',
 		val4: '',
+		val41: '',
 		val5: '',
 	}
 };
@@ -39,6 +34,7 @@ export default function (state = initialState, action) {
 					val2: action.payload.sideBarContent.val2,
 					val3: action.payload.sideBarContent.val3,
 					val4: action.payload.sideBarContent.val4,
+					val41: action.payload.sideBarContent.val41,
 					val5: action.payload.sideBarContent.val5,
 				}
 			};
@@ -54,6 +50,7 @@ export default function (state = initialState, action) {
 					val2: action.payload.sideBarContent.val2,
 					val3: action.payload.sideBarContent.val3,
 					val4: action.payload.sideBarContent.val4,
+					val41: action.payload.sideBarContent.val41,
 					val5: action.payload.sideBarContent.val5,
 				}
 			};
@@ -73,6 +70,7 @@ export default function (state = initialState, action) {
 					val2: '',
 					val3: '',
 					val4: '',
+					val41: '',
 					val5: '',
 				}
 			};

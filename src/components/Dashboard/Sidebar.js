@@ -10,7 +10,9 @@ import '../../styles/sidebar.scss'
 import {connect} from "react-redux";
 import {sidebarClose, sidebarEditInput, sidebarOpen, sidebarOpenToEdit} from "../../redux/actions/sidebar";
 import {addPassword, editPassword} from "../../redux/actions/passwords";
-
+import {addCard, editCard} from "../../redux/actions/cards";
+import InputMask from "react-input-mask";
+import MaskedInput from 'react-text-mask'
 class DashboardSidebar extends React.Component {
 	state = {
 		step: 0,
@@ -27,6 +29,7 @@ class DashboardSidebar extends React.Component {
 		this.props.sidebarEditInput({name: 'val2', value: ''});
 		this.props.sidebarEditInput({name: 'val3', value: ''});
 		this.props.sidebarEditInput({name: 'val4', value: ''});
+		this.props.sidebarEditInput({name: 'val41', value: ''});
 		this.props.sidebarEditInput({name: 'val5', value: ''});
 		this.setState({
 			step: 0,
@@ -62,6 +65,27 @@ class DashboardSidebar extends React.Component {
 				) {
 					this.props.addPassword(this.props.sideBarContent)
 				}
+				break;
+			case 'card':
+				if (this.props.sideBarContent.val1 !== '' &&
+					this.props.sideBarContent.val !== '' &&
+					this.props.sideBarContent.val3 !== '' &&
+					this.props.sideBarContent.val4 !== '' &&
+					this.props.sideBarContent.val41 !== ''
+				) {
+					this.props.addCard(this.props.sideBarContent)
+				}
+		}
+	};
+
+	onEditItem = () => {
+		switch (this.props.isShowType) {
+			case 'password':
+				this.props.editPassword(this.props.sideBarContent);
+				break;
+			case 'card':
+				this.props.editCard(this.props.sideBarContent);
+				break;
 		}
 	};
 
@@ -83,7 +107,7 @@ class DashboardSidebar extends React.Component {
 					<img className='sidebar-block-add-content-item-pic' src={LocationIcon} alt=""/>
 					<div className='text--21-medium--sidebar'>Address</div>
 				</div>
-				<div className='sidebar-block-add-content-item disabled'> {/* onClick={this.onChangeStep.bind(this, 1, 'card')} */}
+				<div onClick={this.onChangeStep.bind(this, 1, 'card')} className='sidebar-block-add-content-item'>
 					<img className='sidebar-block-add-content-item-pic card-last' src={CardIcon} alt=""/>
 					<div className='text--21-medium--sidebar'>Card</div>
 				</div>
@@ -123,7 +147,7 @@ class DashboardSidebar extends React.Component {
 				inputNames.inputFieldOne = 'Number';
 				inputNames.inputFieldTwo = 'Cvv';
 				inputNames.inputFieldThree = 'Password';
-				inputNames.inputFieldFour = 'Name';
+				inputNames.inputFieldFour = ['Name', 'Lastname'];
 				inputNames.inputFieldFive = 'Date';
 				break;
 			default:
@@ -134,36 +158,60 @@ class DashboardSidebar extends React.Component {
 				inputNames.inputFieldFive = '';
 		}
 
+
 		let stepOne = (
 			<div className='sidebar-block-add-content input-list'>
 				<div className='sidebar-block-add-content-input-item'>
 					<div className='text--16-bold'>{inputNames.inputFieldOne}</div>
-					<input className='inner-shadows input-filed sidebar-search sidebar-block-input ' type="text" name='val1' value={this.props.sideBarContent.val1}
-					       onChange={this.onChangeGlobalState}/>
+					<InputMask className='inner-shadows input-filed sidebar-search sidebar-block-input' mask={(this.state.selectedItem === 'card' || this.props.isShowType === 'card') ? '9999 9999 9999 9999' : null} name={'val1'} onChange={this.onChangeGlobalState}
+					           value={this.props.sideBarContent.val1}/>
 				</div>
 				<div className='sidebar-block-add-content-input-item'>
 					<div className='text--16-bold'>{inputNames.inputFieldTwo}</div>
-					<input className='inner-shadows input-filed sidebar-search sidebar-block-input' type={(this.state.selectedItem === 'card') ? 'number' : 'text'} name='val2'
-					       value={this.props.sideBarContent.val2} onChange={this.onChangeGlobalState}/>
+					<InputMask className='inner-shadows input-filed sidebar-search sidebar-block-input' mask={(this.state.selectedItem === 'card' || this.props.isShowType === 'card') ? '999' : null} name={'val2'} onChange={this.onChangeGlobalState}
+					           value={this.props.sideBarContent.val2}/>
 				</div>
 				<div className='sidebar-block-add-content-input-item'>
 					<div className='text--16-bold'>{inputNames.inputFieldThree}</div>
-					<input className='inner-shadows input-filed sidebar-search sidebar-block-input' type={(this.state.selectedItem === 'card') ? 'number' : 'text'} name='val3'
-					       value={this.props.sideBarContent.val3} onChange={this.onChangeGlobalState}/>
+					<InputMask className='inner-shadows input-filed sidebar-search sidebar-block-input' mask={(this.state.selectedItem === 'card' || this.props.isShowType === 'card') ? '9999' : null} name={'val3'} onChange={this.onChangeGlobalState}
+					           value={this.props.sideBarContent.val3}/>
 				</div>
-				{(this.state.selectedItem === 'password') ?
+
+				{(this.state.selectedItem === 'password' || this.props.isShowType === 'password') ?
 					<div className='sidebar-block-add-content-input-item'>
 						<div className='text--16-bold'>{inputNames.inputFieldFour}</div>
 						<input className='inner-shadows input-filed sidebar-search sidebar-block-input' type="text" name='val4' value={this.props.sideBarContent.val4}
 						       onChange={this.onChangeGlobalState}/>
 						<div className='text--14-regular  sidebar-block-generate' onClick={this.generatePassword}>Generate</div>
-					</div> :
+					</div>
+					:
 					<div className='sidebar-block-add-content-input-item'>
-						<div className='text--16-bold'>{inputNames.inputFieldFour}</div>
-						<input className='inner-shadows input-filed sidebar-search sidebar-block-input' type="text" name='val4' value={this.props.sideBarContent.val4}
-						       onChange={this.onChangeGlobalState}/>
+						<div className="row ml-0">
+							<div className='col-6 pl-0'>
+								<div className='text--16-bold'>{inputNames.inputFieldFour[0]}</div>
+								<InputMask className='inner-shadows input-filed sidebar-search sidebar-block-input'
+								           mask={[/[A-Z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/]}
+								           name={'val4'}
+								           onChange={this.onChangeGlobalState}
+								           value={this.props.sideBarContent.val4}
+								           maskPlaceholder={''}
+								/>
+							</div>
+							<div className='col-6 pl-0'>
+								<div className='text--16-bold'>{inputNames.inputFieldFour[1]}</div>
+								<InputMask className='inner-shadows input-filed sidebar-search sidebar-block-input'
+								           mask={[/[A-Z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/, /[a-z]/]}
+								           name={'val41'}
+								           onChange={this.onChangeGlobalState}
+								           value={this.props.sideBarContent.val41}
+								           maskPlaceholder={''}
+								/>
+							</div>
+						</div>
 					</div>
 				}
+
+
 				{(this.state.selectedItem === 'password' || this.props.isShowType === 'password') ?
 					<div className='sidebar-block-add-content-input-item'>
 						<div className='text--16-bold'>{inputNames.inputFieldFive}</div>
@@ -178,13 +226,16 @@ class DashboardSidebar extends React.Component {
 					</div> :
 					<div className='sidebar-block-add-content-input-item'>
 						<div className='text--16-bold'>{inputNames.inputFieldFive}</div>
-						<input className='inner-shadows input-filed sidebar-search sidebar-block-input' type={(this.state.selectedItem === 'card') ? 'date' : 'text'} name='val5'
-						       value={this.props.sideBarContent.val5} onChange={this.onChangeGlobalState}/>
+						<input className='inner-shadows input-filed sidebar-search sidebar-block-input' type={(this.state.selectedItem || this.props.isShowType === 'card') ? 'month' : 'text'}
+						       name='val5'
+						       value={(this.props.sideBarContent.val5.indexOf('/') !== -1) ? 20 + this.props.sideBarContent.val5.split('/')[1]+'-'+this.props.sideBarContent.val5.split('/')[0] : this.props.sideBarContent.val5}
+						       onChange={this.onChangeGlobalState}/>
 					</div>
 				}
+
 				<div className='sidebar-block-add-bottom-block fixed-bottom'>
 					{(this.props.isEditMode) ?
-						<button className='button sidebar-button' onClick={() => this.props.editPassword(this.props.sideBarContent)}>Save</button> :
+						<button className='button sidebar-button' onClick={this.onEditItem}>Save</button> :
 						(this.props.isOpen && this.state.step === 1 && !this.props.isShowMode) ?
 							<button className='button sidebar-button' onClick={this.onSaveNewItem}>Save</button> :
 							''
@@ -272,4 +323,4 @@ const mapStateToProps = (state) => ({
 	isEditMode: state.sidebar.isEditMode
 });
 
-export default connect(mapStateToProps, {sidebarOpen, sidebarOpenToEdit, sidebarClose, sidebarEditInput, addPassword, editPassword})(DashboardSidebar)
+export default connect(mapStateToProps, {sidebarOpen, sidebarOpenToEdit, sidebarClose, sidebarEditInput, addPassword, editPassword, addCard, editCard})(DashboardSidebar)

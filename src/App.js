@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter} from 'react-router-dom';
 import Router from './router/Routers'
 import './styles/global.scss'
+import './styles/fonts.css'
 import {loadUser} from "./redux/actions/auth";
 
 const store = createStore(rootReducer, compose(
